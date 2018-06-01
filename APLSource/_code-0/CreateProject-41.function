@@ -2,6 +2,6 @@
      0=dat←createProject ⍵:''
      dat.nspath⊣dataSpaces dat ⍝ remember
 ⍝ ⍵ folder space
-⍝ ← ProjectSpace
+⍝ ← projectSpace
 ⍝ Phil Last 2017-11-28 09.50
  }

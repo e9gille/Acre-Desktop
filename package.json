@@ -1,0 +1,26 @@
+{
+  "name": "acre-desktop",
+  "version": "4.3.1",
+  "description": "Project Management for APL",
+  "main": "acre",
+  "caseCode": "on",
+  "projectSpace": "acre",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/e9gille/Acre-Desktop.git"
+  },
+  "keywords": [
+    "apl",
+    "apm",
+    "npm"
+  ],
+  "author": "Phil Last",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e9gille/Acre-Desktop/issues"
+  },
+  "homepage": "https://github.com/e9gille/Acre-Desktop#readme"
+}

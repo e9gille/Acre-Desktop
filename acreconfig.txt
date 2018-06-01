@@ -1,6 +1,0 @@
-:Namespace
-    CaseCode←'On'
-    Open←''
-    ProjectSpace←'#.acre'
-    StartUp←''
-:EndNamespace

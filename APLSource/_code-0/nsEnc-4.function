@@ -1,0 +1,5 @@
+ nsEnc←{
+     (n v)←(MS.BA,⍵.name,'_')(⍵.version)
+     ⎕D∊⍨⊃v:n,'_'@{⍵∊'.-'}v
+     n,0(7162⌶)v
+ }

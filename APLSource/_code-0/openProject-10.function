@@ -7,15 +7,15 @@
      ~∨/2⍴src cnf cde←⎕NEXISTS¨dat.(source config changes):{
          0}showMsg MS.DG,' ',¯30 UT.tm dat.folder
      z←'dat'⎕NS UT.lc⊢cfg←readConfig dat.config
-     nspath←{'/'UT.nn ¯1↓dat.folder}if null dat.projectspace if null tgt
+     nspath←{'/'UT.nn ¯1↓dat.folder}if null dat.projectspace if null top(tgt ie nsEnc)dat
      ~((1=≢)∨0∘ssp∨0=⎕NC)dat.nspath←⊃prefSpace nspath:{
          0}showMsg MS.DC
      ~dat openLoad trk dep:0 ⍝ load subsids
 
      z←showMsg(MS.ER,MS.EY),dat.folder
      space←⍎dat.nspath #.⎕NS''⊣openProjects⊣⎕EX{# UT.nl⍳10}if≢dat.nspath
-     cfg.KeepHistory←MS.GB MS.GA⊃⍨dat.hist←≢/Cc dat.keephistory MS.GB
-     cfg.CaseCode←MS.GB MS.GA⊃⍨dat.case←≢/Cc dat.casecode MS.GB
+     cfg.keepHistory←MS.GB MS.GA⊃⍨dat.hist←≢/Cc dat.keephistory MS.GB
+     cfg.caseCode←MS.GB MS.GA⊃⍨dat.case←≢/Cc dat.casecode MS.GB
      z←MS.FV space.{⍎⍺,'←⍵'}cfg⊣cfg.ProjectFolder←dat.folder
      z←showMsg MS.EZ,dat.nspath
      z←deleteFolder⍣(cde>dat.hist)⊢dat.code
@@ -25,7 +25,9 @@
      dat.changed←dat changes''
      z←space∘{0::⊢showMsg UT.bx MS.DN,MS.DP,⍵
          ⊢⍺.⍎UT.ep ⍵}if(trk∧top>null)dat.startup ⍝ trk?
-     dat⊣dat.loadtime,←DT.ts2dt ⎕TS
+
+     dat.loadtime,←DT.ts2dt ⎕TS
+     linkDependencies if top⊢dat
 ⍝ [⍺] trk dep
 ⍝ ⍵ trk dep (folder [space])
 ⍝ ← dat or 0 - see OpenProject LoadProject CreateProject

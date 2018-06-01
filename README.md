@@ -63,8 +63,7 @@ Most of the time, however, this folder is created for you by the CreateProject c
 
 The second reserved folder is **.acre**. This folder contains Acre Desktop related stuff. In general, there are no user serviceable parts in this folder, and you cannot create it yourself.
 
-The reserved file is **acreconfig.txt**. This is a text file (JSON or scripted namespace),
-that contains configuration parameters for the project. This file is created for you when the CreateProject command is used to create the project, but it is easy to create it by hand.
+The reserved file is **package.json**. This is an [npm package.json file])(https://docs.npmjs.com/files/package.json) that contains configuration parameters for the project. This file is created for you when the CreateProject command is used to create the project, but it is easy to create it by hand.
 
 Thus it is simple to create a project outside of the Dyalog IDE and Acre Desktop if you so choose. 
 Simply create a folder for your project, create a sub folder named APLSource, and populate with source code text files.
@@ -79,29 +78,28 @@ folder and file names are tagged by Acre Desktop with a **case-code**.
 In general, case-codes can be ignored by the programmer, but for details see the wiki page for 
 [Item Names and File Names](https://github.com/the-carlisle-group/Acre-Desktop/wiki/Item-Names-and-File-Names)
 
-## The Acre Config File
-This text file contains acre parameters specific to the project. It may be JSON or a Dyalog scripted namespace. For example:
+## The package.json file
+This is an [npm package.json file])(https://docs.npmjs.com/files/package.json) with some additional acre parameters specific to the project. For example:
 
 ~~~
 { 
-     "ProjectSpace": "#.Library.MyProject"
-     "Open":         ["MyOtherProject1","MyOtherProject2"]
-     "Load":         ["../APLTeam/Utils","../APLTeam/LogDog"]
-     "StartUp":      "Initialize"    
+     "projectSpace": "MyProject"
+     "dependencies": {
+        "@my-org/project-1": "^1.5.0",
+        "@my-org/project-2": "2.3.x"
+     },
+     "devDependencies": {
+         "@aplteam/utils": "^2.0.0",
+         "@aplteam/logdog": "0.0.1"
+     },
+     "startUp":        "Initialize"    
 }
 ~~~
 
-The ProjectSpace parameter is the namespace for the project code.
+The projectSpace parameter is the namespace for the project code.
 
-If not present, this defaults to a root level namespace named for last node of the project folder.
-For example, if the project folder is c:\CarlisleGroup\FlipDB, the default project space is #.FlipDB. 
+If not present, this defaults to a namespace named for the last node of the project folder.
+For example, if the project folder is c:\CarlisleGroup\FlipDB, the default project space is FlipDB. 
 
-The Open parameter is a list of additional projects to open. 
-
-The Load parameter is a list of additional projects to load. 
-
-An item in either list is the project folder alone, or a project folder and a project space. 
-Together, the two lists are **included** projects.
-
-The StartUp parameter is an expression to be executed in the project namespace after the project
-and all of the included projects are open or loaded. 
+The startUp parameter is an expression to be executed in the project namespace after the project
+and all of its dependencies are loaded.

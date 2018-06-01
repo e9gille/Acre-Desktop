@@ -5,7 +5,7 @@
      d←~∘∊⍨⊃MS.HI ⎕NGET cnf 1                     ⍝ lose blank rows
      r t←0{'⍝'=z←⊃~∘' '⊃⍵:(1+⍺)∇ 1↓⍵ ⋄ ⍺ z}d      ⍝ lose comment rows
      cl←Cc⊢cu←{⍵.⎕NL-2}cfg←t{                     ⍝ actuals
-         ⍺='{':7159⌶1↓⊃,/(⎕UCS 13),¨⍵                 ⍝ JSON
+         ⍺='{':json 1↓⊃,/(⎕UCS 13),¨⍵                 ⍝ JSON
          ⍺=':':0 ⎕FIX ⍵                               ⍝ APLscript
          ⍺='[':AN.decode ⍵                            ⍝ APLAN
          ⎕NS''                                        ⍝ none of the above

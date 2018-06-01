@@ -11,9 +11,9 @@
          ⍵}dat.folder∘,¨MS.HM MS.GY,MS.HL∘,¨''MS.EU MS.HF
      z←fixQV⊢space←⍎dat.nspath ⎕NS''⊣openProjects''
      z←3 ⎕MKDIR¨dat.(source changes)
-     (cfg←configFields'').ProjectSpace←dat.nspath
-     cfg.CaseCode←dat.case⊃MS.GB MS.GA
-     z←(1⌽MS.HH MS.HG,1↓¯1↓2 AN.format cfg)MS.HI ⎕NPUT dat.config
+     (cfg←configFields'').projectSpace←dat.nspath
+     cfg.caseCode←dat.case⊃MS.GB MS.GA
+     z←(json cfg)MS.HI ⎕NPUT dat.config
      z←'dat'⎕NS UT.lc cfg ⍝ ← into dat ↑ write
      z←MS.FV space.{⍎⍺,'←⍵'}cfg⊣cfg.ProjectFolder←dat.folder
      z←MS.AB ⎕NPUT dat.folder,MS.FM ⍝ git specific -

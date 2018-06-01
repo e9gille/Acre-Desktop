@@ -1,0 +1,5 @@
+ json←{
+     ⍺←~(1=≡⍵)∧0=10|⎕DR ⍵ ⍝ default to decode if simple string
+     2::(7159+⍺)⌶⍵        ⍝ fallback for pre v16
+     ⍺ ⎕JSON ⍵
+ }

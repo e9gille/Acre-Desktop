@@ -26,7 +26,7 @@
          ⍵.AY←'.apl'∘,¨'a' 'f' 'o' 'n' 'c' 'i' 'l' 'm' 's'
          ⍵.AU←nms.author
 
-         ⍵.BA←''
+         ⍵.BA←'#._apm.'
          ⍵.BC←''
          ⍵.BD←''
          ⍵.BF←'Version '
@@ -83,7 +83,7 @@
          ⍵.ET←'Deleting '
          ⍵.EU←'changes/'
          ⍵.EV←' removed'
-         ⍵.EW←'config'
+         ⍵.EW←'package'
          ⍵.EX←'.delete'
          ⍵.EY←' from '
          ⍵.EZ←' to '
@@ -121,7 +121,7 @@
          ⍵.GU←'New in Editor'
          ⍵.GX←'No open projects'
          ⍵.GY←'APLSource/'
-         ⍵.GZ←'.txt'
+         ⍵.GZ←'.json'
 
          ⍵.HA←'! Project or folder already exists.'
          ⍵.HB←'!!! Invalid path or not a project.'
@@ -131,7 +131,7 @@
          ⍵.HI←'UTF-8'
          ⍵.HJ←'GetBuildID'
          ⍵.HL←'.',MS.AA,'/'
-         ⍵.HM←MS.AA,MS.EW,MS.GZ
+         ⍵.HM←MS.EW,MS.GZ
          ⍵.HN←'.change'
 
          ⍵.IB←'nameclass'

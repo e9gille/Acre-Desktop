@@ -12,7 +12,7 @@ This will affect OpenProject if, for instance, one of its dependencies
 fails to open. It will continue as far as it can so that any failed
 dependencies can then be loaded separately if possible afterwards.
 
-Circular dependencies are now prevented so that interdenpendent projects
+Circular dependencies are now prevented so that interdependent projects
 can now be loaded successfully.
 
 -----------------
@@ -45,8 +45,8 @@ New command
  Update open project with changes to source 
  Syntax: ]acre.Refresh space
 
-If KeepHistory is Off then copy in additions and changes.
-If KeepHistory is On then also create change files for additions and
+If keepHistory is Off then copy in additions and changes.
+If keepHistory is On then also create change files for additions and
     changes; and delete files for deletions of items already changed.
 
 The "acre." group prefix is mandatory because there is already a command
@@ -58,7 +58,7 @@ that appears to fulfil a similar role.
 |    or                                |
 | Change History:             is empty | after ]PurgeHistory
 |    or                                |
-| Change History                is Off | if KeepHistory is Off
+| Change History                is Off | if keepHistory is Off
 - - - - - -
 Script:
 .--------------------------------------------------------.
@@ -136,12 +136,12 @@ Release Notes
 Acre DeskTop
 
 For a new project acreConfig.txt is now created with
-    KeepHistory←'On'
+    keepHistory←'On'
 
 This is the default. Changing it to
-    KeepHistory←'Off' 
+    keepHistory←'Off' 
 or inserting that or 
-   "KeepHistory": "Off" ⍝ or "off" or "OFF" &c.
+   "keepHistory": "Off" ⍝ or "off" or "OFF" &c.
 
 into an existing file causes the next ]Open- or ]LoadProject to erase the 
 .acre/ folder and disables the ]Changes, ]Restore, ]Undo, ]Redo and 
@@ -152,7 +152,7 @@ commands and the recording of new changes but not the previously discarded
 history.
 
 The names in acreConfig.txt are case insensitive. This means that although 
-the file can contain e.g. both "Open" and "open" or "KeepHistory" and 
+the file can contain e.g. both "Open" and "open" or "keepHistory" and 
 "keephistory" only one of them will be honoured. This is the first that 
 appears in alphabetical (⎕NL) order. In #.project.AcreConfig they are
 standardised with the documented (PascalCase) capitalisation.
