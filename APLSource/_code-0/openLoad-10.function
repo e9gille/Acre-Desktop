@@ -1,11 +1,16 @@
  openLoad←{dat←⍺ ⋄ trk dep←⍵             ⍝ as of caller
      ~null showMsg dat∘openConflict⍣trk⊢'':0 ⍝ can't open this
      ~dep:1                              ⍝ ok but no deps
-     ~⎕NEXISTS d←dat.folder,'/node_modules':1
+     ~⎕NEXISTS d←dat.folder,'node_modules':1
      0∊⍴these←⊃⎕NINFO⍠1⊢d,'/*':1
      track depend←1 1
      dts←(⊂trk dep)openProject¨↓track,depend,⍪↓(⍪these),⊂''
      dts track depend/⍨←⊂dts≠0           ⍝ only opened
+     dat.links←(⊂'')~⍨{
+         ~0∊⍴⍵._location:''
+         e←('.'/⍨×≢⍵.main),⍵.main
+         ⍵.projectspace,'←',⍵.nspath,e
+     }¨dts
      z←dataSpaces track/dts              ⍝ keep only tracked dependencies
      ~null showMsg dat∘openConflict⍣trk⊢'':0⊣showMsg dat.config MS.CB
      1:1

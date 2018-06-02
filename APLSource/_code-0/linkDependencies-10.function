@@ -1,14 +1,15 @@
  linkDependencies←{
-     ~⎕NEXISTS m←⍵.folder,'/node_modules':⍵
+     z←⍵.nspath∘⍎¨if{×≢⍵}⍵.links
+     ~⍺:⍵
+     ~⎕NEXISTS m←⍵.folder,'node_modules':⍵
      pjs←⊃⎕NINFO⍠'Recurse' 1⊢m,'/package.json'
      cfgs←(json⊃∘⎕NGET)¨pjs
      mods←(⍎¨nsEnc¨cfgs),⍎⍵.nspath
      ⍵⊣{
-         exp←⍵{6::'' ⋄ 0∊⍴m←⍺.⍎⍵:'' ⋄ '.',m}'main'
+         0=⍵.⎕NC'_requiredBy':1   ⍝ local package
+         e←{('.'/⍨×≢⍵),⍵}⍵.main
          m←(cfgs._location,⊂,'/')∊⍵._requiredBy~⊂'#USER'
-         name←exp{0∊⍴⍺:⍵ ⋄ 1↓⍺}⍵.projectSpace
          ~∨/m:1
-         ns←nsEnc ⍵
-         1⊣(m/mods)⍎¨⊂name,'←',ns,exp
+         1⊣(m/mods)⍎¨⊂⍵.projectSpace,'←',(nsEnc ⍵),e
      }¨cfgs
  }

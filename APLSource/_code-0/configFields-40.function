@@ -2,10 +2,13 @@
      {
          ⍵.caseCode←'On'     ⍝ integer suffix to name elements
          ⍵.keepHistory←'On'  ⍝ store .change- and .delete-files
+         ⍵.main←''           ⍝ main object to export
          ⍵.name←''           ⍝ name
          ⍵.projectSpace←''   ⍝ #[.path]
          ⍵.startUp←''        ⍝ executed after OpenProject
          ⍵.version←''        ⍝ version number
+         ⍵.links←⍬           ⍝ links to dependencies
+         ⍵._location←''      ⍝ indicator it is a linked dependency
          ⍵
      }#.⎕NS''
 ⍝ ⍵ ?

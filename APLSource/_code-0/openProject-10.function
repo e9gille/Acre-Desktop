@@ -27,7 +27,7 @@
          ⊢⍺.⍎UT.ep ⍵}if(trk∧top>null)dat.startup ⍝ trk?
 
      dat.loadtime,←DT.ts2dt ⎕TS
-     linkDependencies if top⊢dat
+     top linkDependencies dat
 ⍝ [⍺] trk dep
 ⍝ ⍵ trk dep (folder [space])
 ⍝ ← dat or 0 - see OpenProject LoadProject CreateProject
