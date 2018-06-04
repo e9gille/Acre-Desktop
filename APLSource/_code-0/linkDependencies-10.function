@@ -4,11 +4,12 @@
      ~⎕NEXISTS m←⍵.folder,'node_modules':⍵
      pjs←⊃⎕NINFO⍠'Recurse' 1⊢m,'/package.json'
      cfgs←(json⊃∘⎕NGET)¨pjs
+     p←({6::'/',⍵.name ⋄ ⍵._location}¨cfgs),⊂,'/'
      mods←(⍎¨nsEnc¨cfgs),⍎⍵.nspath
      ⍵⊣{
          0=⍵.⎕NC'_requiredBy':1   ⍝ local package
          e←{('.'/⍨×≢⍵),⍵}⍵.main
-         m←(cfgs._location,⊂,'/')∊⍵._requiredBy~⊂'#USER'
+         m←p∊⍵._requiredBy~⊂'#USER'
          ~∨/m:1
          1⊣(m/mods)⍎¨⊂⍵.projectSpace,'←',(nsEnc ⍵),e
      }¨cfgs
